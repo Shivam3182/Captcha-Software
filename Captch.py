@@ -1,16 +1,13 @@
-# Captcha Software using Python
 from tkinter import *
 from PIL import Image, ImageDraw, ImageFont, ImageTk
 import random
 import string
 import io
 
-# Function to generate a random captcha text
 def generate_captcha_text(length=6):
     characters = string.ascii_letters + string.digits
     return ''.join(random.choices(characters, k=length))
 
-# Function to generate captcha image from text
 def generate_captcha_image(text):
     font = ImageFont.truetype("arial.ttf", 30)
     width, height = 160, 60
@@ -28,7 +25,6 @@ def generate_captcha_image(text):
 
     return image
 
-# Function to refresh captcha
 def refresh_captcha():
     global captcha_text
     captcha_text = generate_captcha_text()
@@ -37,7 +33,6 @@ def refresh_captcha():
     captcha_label.config(image=img_tk)
     captcha_label.image = img_tk
 
-# Function to verify captcha
 def verify_captcha():
     user_input = entry.get()
     if user_input == captcha_text:
